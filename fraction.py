@@ -28,6 +28,25 @@ class Fraction:
             self.B *= other.B
         return self
 
+    def __sub__(self, other):
+        if self.B == other.B:
+            return Fraction(self.A-other.A, self.B)
+        else:
+            return Fraction(self.A*other.B-other.A*self.B, self.B*other.B)
+
+    def __isub__(self, other):
+        if self.B == other.B:
+            self.A -= other.A
+        else:
+            self.A = self.A*other.B-other.A*self.B
+            self.B *= other.B
+        return self
+
     def __mul__(self, fraction):
         return Fraction(self.A*fraction.A, self.B*fraction.B)
+
+    def __truediv__(self, other):
+        return Fraction(self.A*other.B, self.B*other.A)
+
+
 
