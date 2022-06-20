@@ -1,11 +1,14 @@
 from fraction import Fraction
+from polinom import Polinom
 
 
 def main():
-    number1 = Fraction(183, 18)
-    number2 = Fraction(1, 3)
-    number2 /= number1
-    print(number1)
+    pol1 = Polinom(3, [4, 3, 2, 9])
+    pol2 = Polinom(4, [1, 2, 3, 4, 5])
+    print(pol1, pol2, sep='\n')
+    print(pol1-pol2)
+    pol1 -= pol2
+    print(pol1)
 
 
 if __name__ == '__main__':
