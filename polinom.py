@@ -35,14 +35,26 @@ class Polinom:
                     result += ' {} '.format(self.array[i])
                     if i != self.n and self.array[i+1] != 0 and self.array[i+1] > 0:
                         result += '+'
+                    elif i != self.n and self.array[i+1] != 0 and self.array[i+1] < 0:
+                        result += '-'   
             elif i == 1 and self.array[i] != 0:
-                result += ' {}·x '.format(self.array[i])
+                if self.array[i] > 0:
+                    result += ' {}·x '.format(self.array[i])
+                else: 
+                    result += ' {}·x '.format(-self.array[i])
                 if i != self.n and self.array[i+1] != 0 and self.array[i+1] > 0:
-                    result += '+'
+                    result += '+' 
+                elif i != self.n and self.array[i+1] != 0 and self.array[i+1] < 0:
+                    result += '-' 
             elif self.array[i] != 0:
-                result += ' {}·x{} '.format(self.array[i], self.degreestr[str(i)])
-                if i != self.n and self.array[i+1] != 0 and self.array[i+1] > 0:
+                if self.array[i] > 0:
+                    result += ' {}·x{} '.format(self.array[i], self.degreestr[str(i)])
+                else:
+                    result += ' {}·x{} '.format(-self.array[i], self.degreestr[str(i)])
+                if i < self.n and self.array[i+1] != 0 and self.array[i+1] > 0:
                     result += '+'
+                elif i < self.n and self.array[i+1] != 0 and self.array[i+1] < 0:
+                    result += '-'
         return result
 
     def __add__(self, other):
