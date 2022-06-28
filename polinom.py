@@ -1,3 +1,4 @@
+from itertools import count
 from termcolor import cprint
 
 
@@ -135,3 +136,24 @@ class Polinom:
             self.n = result_n
             self.array = result_array
         return self
+
+    def __mul__(self, other):
+        newn = self.n + other.n
+        arr = [0]*(newn+1)
+        for i in range(self.n+1):
+            for j in range(other.n+1):
+                arr[i+j] = self.array[i] * other.array[j] + arr[i+j]
+
+        return Polinom(newn, arr)
+
+    def __truediv__(self, other):
+        if self.n < other.n:
+            return Polinom(-1, [])
+        count = self.n - other.n
+        arr = [0]*(count+1)
+        for i in range(self.n, other.n, -1):
+            arr[count] = self.array[i] / other.array[other.n]
+            for j in range(other.n):
+                self.array[i-j] -= other.array[other.n-j] * arr[count]
+            count -= 1
+        return Polinom(self.n-other.n, arr)
