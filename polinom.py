@@ -148,6 +148,7 @@ class Polinom:
 
     def __truediv__(self, other):
         if self.n < other.n:
+            cprint('Error: Нельзя делить меньший полином на больший', 'red')
             return Polinom(-1, [])
         count = self.n - other.n
         arr = [0]*(count+1)
