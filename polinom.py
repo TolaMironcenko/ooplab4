@@ -112,7 +112,6 @@ class Polinom:
             result_array[result_n] = self.array[result_n]
             return Polinom(result_n, result_array)
 
-
     def __isub__(self, other):
         if other.n > self.n:
             result_n = other.n
