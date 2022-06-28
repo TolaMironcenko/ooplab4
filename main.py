@@ -1,5 +1,6 @@
 from fraction import Fraction
 from polinom import Polinom
+from termcolor import cprint
 
 
 def main():
@@ -11,4 +12,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except KeyboardInterrupt:
+        exit('byby')
+    except Exception as e:
+        cprint('Error: ' + str(e), 'red')
