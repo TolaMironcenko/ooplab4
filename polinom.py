@@ -22,9 +22,9 @@ class Polinom:
                     "9": "⁹"
                 }
             else:
-                cprint('Error: Длинна массива array должна быть равной n', 'red')
+                cprint('Error: Длинна массива array должна быть равной n+1', 'red')
         except Exception as e:
-            cprint(str(e)+'\nError: array должен быть массивом длинна которого должна быть равной n', 'red')
+            cprint(str(e)+'\nError: array должен быть массивом длинна которого должна быть равной n+1', 'red')
 
     def __str__(self):
         result = ''
