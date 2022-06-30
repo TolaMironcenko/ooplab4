@@ -6,7 +6,10 @@ class Fraction:
         self.cut()
 
     def cut(self):
-        for i in range(1, self.B):
+        if self.B < 0:
+            self.A *= -1
+            self.B *= -1
+        for i in range(1, self.__B):
             if (self.A % i == 0) and (self.B % i == 0):
                 self.A = int(self.A/i)
                 self.B = int(self.B/i)
@@ -14,10 +17,10 @@ class Fraction:
     def __str__(self):
         self.cut()
         if self.A >= self.B:
-            if self. A % self.B == 0:
+            if self.A % self.B == 0:
                 return '{}'.format(self.A//self.B)
             else:
-                return '{} and {}/{}'.format(self.A // self.B, self. A % self.B, self.B)
+                return '{} and {}/{}'.format(self.A // self.B, self.A % self.B, self.B)
         else:
             return '{}/{}'.format(self.A, self.B)
 
